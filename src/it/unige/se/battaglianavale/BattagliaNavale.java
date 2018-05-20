@@ -13,8 +13,8 @@ public class BattagliaNavale {
 
 	public static void main(String[] args) {
 		
-		utenti.add(new UtenteRegistrato("giulia","cagnes","giulia.cagnes@gmail.com","12345"));
-		utenti.add(new UtenteRegistrato("roberto","bianchi","roberto.bianchi@gmail.com","54321"));
+		utenti.add(new UtenteRegistrato("Giulia","Cagnes","giulia.cagnes@gmail.com","12345"));
+		utenti.add(new UtenteRegistrato("Roberto","Bianchi","roberto.bianchi@gmail.com","54321"));
 		
 		Scanner input = new Scanner(System.in);
 		login(input);
