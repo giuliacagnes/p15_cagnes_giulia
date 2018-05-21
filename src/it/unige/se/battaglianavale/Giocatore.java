@@ -42,6 +42,9 @@ public class Giocatore {
 	}
 	
 	public boolean posizionaNave(int x, int y, Utils.Direzione d) {
+		if (indiceNaveDaPosizionare >= navi.size()) {
+			return false;
+		}
 		Nave n = navi.get(indiceNaveDaPosizionare);
 		if (campo.posizionaNave(n, x, y, d)) {
 			indiceNaveDaPosizionare++;
