@@ -58,8 +58,8 @@ public class Cella {
 	public String toString() {
 		// TODO Auto-generated method stub
 		if (occupata) {
-			return "~";
+			return "#";
 		}
-		return "#";
+		return "~";
 	}
 }
