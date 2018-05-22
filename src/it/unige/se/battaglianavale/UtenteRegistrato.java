@@ -1,10 +1,3 @@
-/*
- * Giulia Cagnes
- * 
- * Version 0.1 (beta)
- */
-
-
 package it.unige.se.battaglianavale;
 /**
  * Classe UtenteRegistrato
