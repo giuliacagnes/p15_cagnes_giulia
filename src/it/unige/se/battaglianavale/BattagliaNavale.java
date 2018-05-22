@@ -1,3 +1,8 @@
+/*
+ * Giulia Cagnes
+ * 
+ * Version 0.1 (beta)
+ */
 package it.unige.se.battaglianavale;
 
 import java.util.ArrayList;
@@ -7,10 +12,26 @@ import java.util.regex.Pattern;
 
 import it.unige.se.battaglianavale.Utils.Direzione;
 
+/**
+ * Classe Battaglia Navale contenente il main utile a mostrare tutte le funzionalità.
+ * 
+ * @version     0.1  21 May 2018
+ * @author      Giulia Cagnes
+ *
+ */
+
 public class BattagliaNavale {
+	/** ArrayList contiene utenti*/
 	private static ArrayList<UtenteRegistrato> utenti = new ArrayList<UtenteRegistrato>();
+	
+	/**ArrayList conitene utenti loggati, associazione fra battaglia navale e utente registrato*/
 	private static ArrayList<UtenteRegistrato> utentiLoggati = new ArrayList<UtenteRegistrato>();
 
+	/**
+	 * Main function 
+	 * 
+	 * @param args argomenti
+	 */
 	public static void main(String[] args) {
 		
 		utenti.add(new UtenteRegistrato("Giulia","Cagnes","giulia.cagnes@gmail.com","12345"));
@@ -20,9 +41,9 @@ public class BattagliaNavale {
 		login(input);
 		login(input);
 		
-		boolean posizionaRandom = true;
+		boolean posizionaRandom = false;
 		
-		int[] lunghezzaNavi = {5,3,2,5,3};
+		int[] lunghezzaNavi = {5,3,2,5};
 
 		Giocatore giocatoreA = new Giocatore(utentiLoggati.get(0).getName(), lunghezzaNavi);
 		Giocatore giocatoreB = new Giocatore(utentiLoggati.get(1).getName(), lunghezzaNavi);
@@ -30,47 +51,66 @@ public class BattagliaNavale {
 		Partita p = new Partita(giocatoreA,giocatoreB);
 
 		Giocatore diTurno = p.getDiTurno();
+	
+		String si = null;
+		Pattern pat = null;
+		Matcher mi = null;
+		do {
+			System.out.println("inserisci: -> 1 se vuoi scacchiera navi random ");
+			System.out.println("           -> 2 se vuoi posizionare navi manualmente");
+			si = input.next();
+	        
+			pat = Pattern.compile("[1|2]");
+			mi = pat.matcher(si);
+		} while(!mi.matches());
 		
-		// Posiziona Navi
-		if(posizionaRandom) {
-			p.posizionaNaviRandom();
+		if(si.equals("1")){
+			posizionaRandom = true;
 		} else {
+			posizionaRandom = false;
+		}
+		// Posiziona Navi			
+		if(posizionaRandom) {
+				p.posizionaNaviRandom();		
+		} else {
+			
 			do {
+			
 				System.out.println(diTurno);
 				System.out.println(diTurno.getCampo());
+				System.out.println("Posizionamento Navi...");
 				System.out.println("inserisci delle coordinate e una direzione es. [1,3,U] :");
 				System.out.println("[#riga, #colonna, direzione possibile: U_= UP , D = DOWN, L = LEFT, R = RIGHT]");
-				
-		        String s = input.next();
-		        
+			
+				String s = input.next();
+	        
 				Pattern pattern = Pattern.compile("(\\d),(\\d),([U|D|L|R])");
 				Matcher m = pattern.matcher(s);
+			
+					if (m.matches()) {
+						int y = Integer.parseInt(m.group(1));
+						int x = Integer.parseInt(m.group(2));
+						String dir = m.group(3);
 				
-				if (m.matches()) {
-					int y = Integer.parseInt(m.group(1));
-					int x = Integer.parseInt(m.group(2));
-					String dir = m.group(3);
-					
-					switch (dir) {
-					case "U":
-						diTurno.posizionaNave(x, y, Direzione.SU);
-						break;
-					case "D":
-						diTurno.posizionaNave(x, y, Direzione.GIU);
-						break;
-					case "L":
-						diTurno.posizionaNave(x, y, Direzione.SINISTRA);
-						break;
-					case "R":
-						diTurno.posizionaNave(x, y, Direzione.DESTRA);
-						break;
+						switch (dir) {
+						case "U":
+							diTurno.posizionaNave(x, y, Direzione.SU);
+							break;
+						case "D":
+							diTurno.posizionaNave(x, y, Direzione.GIU);
+							break;
+						case "L":
+							diTurno.posizionaNave(x, y, Direzione.SINISTRA);
+							break;
+						case "R":
+							diTurno.posizionaNave(x, y, Direzione.DESTRA);
+							break;
+						}
+				
+					} if (!diTurno.haNaviDaPosizionare()) {
+						diTurno = p.cambiaTurno();
 					}
-					
-				} 
-				if (!diTurno.haNaviDaPosizionare()) {
-					diTurno = p.cambiaTurno();
-				}
-			} while (diTurno.haNaviDaPosizionare());
+				} while (diTurno.haNaviDaPosizionare());
 		}
 		
 		// Fase di gioco
@@ -124,7 +164,7 @@ public class BattagliaNavale {
 			}
 			email = s;
 			
-			System.out.println("inserisci password:");
+			System.out.println("Inserisci password:");
 			
 			password = input.next();
 			
