@@ -58,6 +58,7 @@ public class Partita {
 	}
 	
 	public void posizionaNaviRandom() {
+		System.out.println("schacchiere di navi Radom sono state assegnate");
 		diTurno.posizionaNaviRandom();
 		this.cambiaTurno();
 		diTurno.posizionaNaviRandom();
