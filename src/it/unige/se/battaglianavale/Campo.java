@@ -33,7 +33,7 @@ public class Campo {
 				
 			// Controllo se le celle non sono occupate da altre navi o se altre navi non siano attorno
 			for (int i = 0; i < nave.getLunghezza(); i++) {
-				if (	!griglia[y-i][x].eOccupata() ||
+				if (	griglia[y-i][x].eOccupata() ||
 						haAltreNaviAttorno(nave,x,y-i)) {
 					return false;
 				}
