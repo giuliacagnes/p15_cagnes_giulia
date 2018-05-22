@@ -1,3 +1,8 @@
+/*
+ * Nicolò Michelis
+ * 
+ * Version 0.1 (beta)
+ */
 package it.unige.se.battaglianavale;
 
 import java.security.GeneralSecurityException;
@@ -8,18 +13,38 @@ import java.util.Random;
 import it.unige.se.battaglianavale.Utils.Direzione;
 import it.unige.se.battaglianavale.Utils.StatoCoordinata;
 
+/**
+ * Classe Giocatore.
+ * 
+ * @version		0.1 28 May 2017
+ * @author 		Nicolò Michelis
+ *
+ */
 public class Giocatore {
+	/** Nome del giocatore*/
 	private String nome;
 
+	/** Associazione fra giocatore e navi*/
 	private ArrayList<Nave> navi;
+	
+	/**Campo del giocatore*/
 	private Campo campo;
 
+	/**Associazione tra Utils e giocatore */
 	private Utils.StatoCoordinata memoriaMosse[][];
 	
+	/**indice nave da posizionare*/
 	private int indiceNaveDaPosizionare;
 
 	/*
 	 * lunghezzaNavi: array di lunghezza navi; la dimensione è il numero di navi, mentre i suoi elementi la lunghezza di ogni nave
+	 */
+	/**
+	 * Costruttore
+	 * 
+	 * @version		0.1 28 May 2017
+	 * @author 		Nicolò Michelis
+	 *
 	 */
 	public Giocatore(String nome, int[] lunghezzaNavi) {
 		indiceNaveDaPosizionare = 0;
@@ -92,7 +117,7 @@ public class Giocatore {
 			Nave n = navi.get(i);
 			if(i==indiceNaveDaPosizionare) {
 				ret += "--> ";
-			} else if(n.eAffondata()) {
+			} else if((indiceNaveDaPosizionare==navi.size()) && (n.eAffondata())) {
 				ret += "X ";
 			}
 
