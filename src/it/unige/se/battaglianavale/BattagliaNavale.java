@@ -5,6 +5,8 @@
  */
 package it.unige.se.battaglianavale;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -27,34 +29,66 @@ public class BattagliaNavale {
 	/**ArrayList conitene utenti loggati, associazione fra battaglia navale e utente registrato*/
 	private static ArrayList<UtenteRegistrato> utentiLoggati = new ArrayList<UtenteRegistrato>();
 
+	
 	/**
 	 * Main function 
 	 * 
 	 * @param args argomenti
 	 */
 	public static void main(String[] args) {
-		
-		utenti.add(new UtenteRegistrato("Giulia","Cagnes","giulia.cagnes@gmail.com","12345"));
+		utenti.add(new UtenteRegistrato("Giulia","Cagnes","giulia.cagnes@gmail.com","12345")); // aggiungo due utenti registrati
 		utenti.add(new UtenteRegistrato("Roberto","Bianchi","roberto.bianchi@gmail.com","54321"));
 		
+		
 		Scanner input = new Scanner(System.in);
-		login(input);
+		login(input);// login degli utenti
 		login(input);
 		
 		boolean posizionaRandom = false;
-		
-		int[] lunghezzaNavi = {5,3,2,5};
-
-		Giocatore giocatoreA = new Giocatore(utentiLoggati.get(0).getName(), lunghezzaNavi);
-		Giocatore giocatoreB = new Giocatore(utentiLoggati.get(1).getName(), lunghezzaNavi);
-		
-		Partita p = new Partita(giocatoreA,giocatoreB);
-
-		Giocatore diTurno = p.getDiTurno();
 	
 		String si = null;
 		Pattern pat = null;
 		Matcher mi = null;
+		
+		
+		do {
+			System.out.println("Inserisci lunghezze delle navi: ");
+			System.out.println("(es: [2,3,4] per avere 3 navi di dimensione 2,3 e 4 rispettivamente.)");
+		    System.out.println("Nota: lunghezza massima nave e' 5 e minima 1, puoi insierire da 1 fino a massimo 5 navi in campo.");
+			si = input.next();
+
+			pat = Pattern.compile("^([1|2|3|4|5],){0,4}([1|2|3|4|5])$");
+			mi = pat.matcher(si);
+		} while(!mi.matches());
+		
+		
+		// trasforma la string in input in un array di stringhe (usando la virgola come separatore) es. 3,4,2 -> [3 4 2]
+		String[] lunghezzaNaviStr = si.split(",");
+		
+		// istanzio l'array lunghezza navi la cui dimensione e la stessa del vettore sopra
+		int[] lunghezzaNavi = new int[lunghezzaNaviStr.length];
+		
+	    int i=0;
+	    for(String lunghezzaNave:lunghezzaNaviStr){ // alla prima iterazione lunghezzaNave varra 3, alla seconda quattro e alla 3 due
+	        lunghezzaNavi[i]=Integer.parseInt(lunghezzaNave);
+	        System.out.println(lunghezzaNavi[i]);
+	        i++;
+	    }
+	    
+		Giocatore giocatoreA = new Giocatore(utentiLoggati.get(0).getName(), lunghezzaNavi);
+		Giocatore giocatoreB = new Giocatore(utentiLoggati.get(1).getName(), lunghezzaNavi);
+
+		Partita p = new Partita(giocatoreA,giocatoreB);
+		
+		Giocatore diTurno = p.getDiTurno();
+//		int i=0;
+		
+//		for(String lunghezzaNave:si.split(",")){
+//			lunghezzaNavi[i]=Integer.parseInt(lunghezzaNave);
+//			System.out.println(lunghezzaNavi[i]);
+	//		i++;
+//		}
+
 		do {
 			System.out.println("inserisci: -> 1 se vuoi scacchiera navi random ");
 			System.out.println("           -> 2 se vuoi posizionare navi manualmente");
@@ -75,9 +109,9 @@ public class BattagliaNavale {
 		} else {
 			
 			do {
-			
 				System.out.println(diTurno);
 				System.out.println(diTurno.getCampo());
+
 				System.out.println("Posizionamento Navi...");
 				System.out.println("inserisci delle coordinate e una direzione es. [1,3,U] :");
 				System.out.println("[#riga, #colonna, direzione possibile: U_= UP , D = DOWN, L = LEFT, R = RIGHT]");
@@ -186,4 +220,15 @@ public class BattagliaNavale {
 		System.out.println("Utente non registrato");
 		return null;
 	}
-}
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+
