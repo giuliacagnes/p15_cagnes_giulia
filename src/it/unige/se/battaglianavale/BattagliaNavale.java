@@ -6,6 +6,7 @@
 package it.unige.se.battaglianavale;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -39,16 +40,43 @@ public class BattagliaNavale {
 		utenti.add(new UtenteRegistrato("Giulia","Cagnes","giulia.cagnes@gmail.com","12345")); // aggiungo due utenti registrati
 		utenti.add(new UtenteRegistrato("Roberto","Bianchi","roberto.bianchi@gmail.com","54321"));
 		
-		
-		Scanner input = new Scanner(System.in);
-		login(input);// login degli utenti
-		login(input);
-		
-		boolean posizionaRandom = false;
-	
 		String si = null;
 		Pattern pat = null;
 		Matcher mi = null;
+		
+		
+		Scanner input = new Scanner(System.in);
+		login(input);// login degli utenti
+		
+		do {
+			System.out.println("inserisci: -> '1' per leggere le regole del gioco o -> '2' per iniziare la partita");
+			si = input.next();
+	        
+			pat = Pattern.compile("[1|2]");
+			mi = pat.matcher(si);
+		} while(!mi.matches());
+		
+		if(si.equals("1")){
+			readFile();
+		}
+		
+		System.out.println("\n"+"In attesa del secondo giocatore..");
+		login(input);
+
+		do {
+			System.out.println("inserisci: -> '1' per leggere le regole del gioco o -> '2' per iniziare la partita");
+			si = input.next();
+	        
+			pat = Pattern.compile("[1|2]");
+			mi = pat.matcher(si);
+		} while(!mi.matches());
+		
+		if(si.equals("1")){
+			readFile();
+		} 
+        boolean posizionaRandom = false;
+	
+	
 		
 		
 		do {
@@ -210,6 +238,13 @@ public class BattagliaNavale {
 	
 	public static UtenteRegistrato verificaLogin(String email, String password) {
 		
+		
+		String si = null;
+		Pattern pat = null;
+		Matcher mi = null;
+		
+		
+		Scanner input = new Scanner(System.in);
 		for(int i=0;i<utenti.size();++i) {
 			UtenteRegistrato corrente = utenti.get(i);
 			if((corrente.getEmail().equals(email)) && (corrente.getPassword().equals(password))){
@@ -218,15 +253,86 @@ public class BattagliaNavale {
 			}
 		}
 		System.out.println("Utente non registrato");
+		do {
+			System.out.println("Vuoi effettuare registrazione utente?  -> 1 Registrati  -> 2 Reinserisci credenziali corrette ");
+			si = input.next();
+	        
+			pat = Pattern.compile("[1|2]");
+			mi = pat.matcher(si);
+		} while(!mi.matches());
+		
+		if(si.equals("1")){
+			registrazioneUtente();
+		}if (si.equals("2")) {
+			login(input);
+		}
+		
 		return null;
 	}
 	
+	public static void readFile() {
+	     
+	    String path = "src/Regole-del-gioco";
+	    char[] in = new char[500000];
+	    int size = 0;
+	    try {
+	        File file = new File(path);
+	        
+	        FileReader fr = new FileReader(file);
+	        size = fr.read(in);
+	         
+	      
+	      
+	         
+	        for(int i=0; i<size; i++)
+	        System.out.print(in[i]);
+	        System.out.println("\n");
+	        fr.close();
+	         
+	    } catch(IOException e) { 
+	        e.printStackTrace();
+	    }
+	}
+	
+	public static void registrazioneUtente() {
 		
+		String email = null;
+		String password = null;
 		
+		Scanner input = new Scanner(System.in);
 		
+			System.out.println("Inserisci Nome:");
+			String n = input.next();
+			
+			System.out.println("Inserisci Cognome:");
+			String c = input.next();
+			
 		
+			System.out.println("Inserisci Email:");
+			String s = input.next();
+			
+			/* https://stackoverflow.com/questions/8204680/java-regex-email */
+		 	Pattern pattern = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+		 	
+			Matcher m = pattern.matcher(s);
+			
+			if (!m.matches()) {
+			
+				System.out.println("Inserire nuovamente un email di un formato corretto [es. pippo123@gmail.com]");
+				
+			}
+			email = s;
+			
+			System.out.println("Inserisci password:");
+			
+			password = input.next();
+			
+			System.out.println("Registrazione utente effettuata correttamente! Ora effettua il Login:");
+		  
+			utenti.add(new UtenteRegistrato(n,c,email,password));
+			
 		
-		
+	}
 		
 		
 		
