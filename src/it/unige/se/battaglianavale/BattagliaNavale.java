@@ -180,6 +180,7 @@ public class BattagliaNavale {
 			boolean haColpito = true;
 
 			System.out.println(p);
+			System.out.println("Spara un colpo!");
 			System.out.println("inserisci delle coordinate [1,3] :");
 			System.out.println("[#riga,#colonna]");
 			
