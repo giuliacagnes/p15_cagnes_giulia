@@ -1,6 +1,6 @@
 /*
- * Giulia Cagnes
- * 
+ *  Giulia Cagnes
+ *  
  *  Version 0.1 (beta)
  */
 package it.unige.se.battaglianavale;
@@ -91,7 +91,7 @@ public class Nave {
 	}
 	
 	@Override
-	public String toString() {
+	public String toString() { // stampo la nave a schermo
 		String ret = "";
 		if(this.affondata)
 			ret += "X ";

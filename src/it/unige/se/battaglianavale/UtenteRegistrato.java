@@ -1,3 +1,8 @@
+/*
+ *  Giulia Cagnes
+ *  
+ *  Version 0.1 (beta)
+ */
 package it.unige.se.battaglianavale;
 /**
  * Classe UtenteRegistrato
@@ -76,11 +81,39 @@ public class UtenteRegistrato {
 	}
 	
 	/**
-	 * Get nome dell'utente.
+	 * Get name dell'utente.
 	 * 
-	 * @return nome dell'utente
+	 * @return name dell'utente
 	 */
 	public String getName() {
 		return name;
+	}
+	
+	/**
+	 * Set name.
+	 * 
+	 * @param name dell'utente
+	 */
+	public void setName(String nome) {
+		this.name = nome;
+	}
+	
+	/**
+	 * Get cognome dell'utente.
+	 * 
+	 * @return cognome dell'utente
+	 */
+	public String getCognome() {
+		return cognome;
+	}
+	
+
+	/**
+	 * Set cognome.
+	 * 
+	 * @param cognome dell'utente
+	 */
+	public void setCognome(String cognome) {
+		this.cognome = cognome;
 	}
 }
