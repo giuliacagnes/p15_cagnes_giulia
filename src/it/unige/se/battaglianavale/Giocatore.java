@@ -40,7 +40,7 @@ public class Giocatore {
 	 * lunghezzaNavi: array di lunghezza navi; la dimensione è il numero di navi, mentre i suoi elementi la lunghezza di ogni nave
 	 */
 	/**
-	 * Costruttore
+	 * Costruttore del Giocatore
 	 * 
 	 *@param nome del giocatore
 	 *@param array di lunghezze navi
@@ -167,7 +167,8 @@ public class Giocatore {
 	}
 /**
  * IL Giocatore ha navi in gioco
- * @return true se tutte le tue navi sono affondate false altrimenti
+ * 
+ * @return true se tutte le tue navi sono tutte affondate, false altrimenti
  */
 	public boolean haNaviInGioco() {
 		for (int i = 0; i < navi.size(); i++) {
