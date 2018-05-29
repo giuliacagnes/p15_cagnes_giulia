@@ -247,8 +247,8 @@ public class Campo {
 	/**
 	 * Attacco la cella
 	 * 
-	 * @param x numero di riga
-	 * @param y numero di colonna
+	 * @param x numero di colonna
+	 * @param y numero di riga
 	 * @return boolean true  : se ha attaccato la cella
 	 *                 false :non ho attaccato la cella
 	 */
@@ -262,8 +262,11 @@ public class Campo {
 		return griglia;
 	}
 
+	/**
+	 * stampo a schermo la griglia 
+	 */
 	@Override
-	public String toString() { // stampo la grigli a schermo
+	public String toString() { // stampo la griglia a schermo
 		String ret = new String();
 		
 		for (int i = 0; i < griglia.length; i++) {

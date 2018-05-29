@@ -83,8 +83,8 @@ public class Partita {
 	/**
 	 * Attacca cella
 	 * 
-	 * @param x indice di riga
-	 * @param y indice di colonna
+	 * @param x indice di colonna
+	 * @param y indice di riga
 	 * @return boolean True giocatore di turno aggiorna matrice memoria mosse con stato cordinata colpito
 	 *                 False giocatore di turno aggiorna matrice memoria mosse con stato mancato nelle cordinate passate
 	 */
@@ -114,6 +114,10 @@ public class Partita {
 		this.cambiaTurno();
 	}
 	
+	/**
+	 * stampa a schermo il giocatore di turno
+	 * e la sua griglia
+	 */
 	@Override
 	public String toString() {
 		String ret = new String();

@@ -89,6 +89,9 @@ public class Nave {
 	public void occupaCella(Cella cellaDaOccupare) {
 		celleOccupate.add(cellaDaOccupare);
 	}
+	/**
+	 * stampo a schermo la nave con il simbolo # 
+	 */
 	
 	@Override
 	public String toString() { // stampo la nave a schermo

@@ -31,8 +31,8 @@ public class Cella {
 	/**
 	 * Costruttore di Cella
 	 * 
-	 * @param x indice di riga
-	 * @param y indice di colonna
+	 * @param x indice di colonna
+	 * @param y indice di riga
 	 */
 	public Cella(int x, int y) {
 		idNave = -1;
@@ -110,7 +110,9 @@ public class Cella {
 		}
 		return false; // return true secondo me 
 	}
-	
+	/**
+	 * stampo a schermo con il simbolo # se la cella e' occupata dalla nave altrimenti ~
+	 */
 	
 	@Override
 	public String toString() {
