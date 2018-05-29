@@ -1,0 +1,47 @@
+
+Regole del gioco Battaglia Navale:
+
+
+Per giocare a battaglia navale occorrono quattro griglie 10x10 (due per posizionare le navi
+
+e le altre due vuote in cui verranno effettuate e "memorizzate" le varie mosse).
+
+Le celle della griglia sono identificate da coppie di coordinate, corrispondenti a riga e colonna;
+
+In questo caso si usano numeri da 0 a 9 (es:  "7,6", dove 7 è l'indice di riga e 6 l'indice di
+
+colonna e così via). 
+
+Il primo giocatore può decidere con quante navi giocare la sua partita(minimo 1 e massimo 5 navi)
+
+e lo stesso numero sarà valido anche per l'avversario. Inoltre ha anche la possibilita di decidere la dimensione
+
+delle navi (minimo 1 e massimo 5). Le dimensioni delle navi sono uguali per entrambi i giocatori.
+
+I giocatori devono posizionare le proprie navi segnandole sulla loro griglia o manualmente (inserendo
+
+le tre cordinate: numero riga,numero colonna,direzione) oppure utilizzando l'opzione "scacchiera navi random"
+
+che ti posiziona automaticamente le navi in modo casuale sulla griglia.
+
+Una "nave" occupa un certo numero di celle adiacenti in linea retta (orizzontale o verticale) sulla tabella.
+
+Due navi non possono toccarsi quindi non possono essere posizionate in celle adiacenti.
+
+Una volta posizionate le navi, il gioco procede a turni. Il giocatore di turno "spara un colpo"
+
+dichiarando una cella nel campo dell'avversario (per esempio, "3,5" equivale a "numero riga=3 , numero colonna=5").
+
+Se la cella dichiarata, è occupata da una nave(o da una parte della sua struttura) dell'avversario, significa 
+
+che hai"colpito la nave!" e la cella assumera il simbolo "X"; in caso negativo risponde "nave mancata" e
+ 
+la cella assumerà valore "O". 
+
+Quando un colpo centra l'ultima cella di una nave non ancora affondata, il giocatore che subisce il colpo 
+
+visualizzera' il simbolo "XX" davanti alla rispettiva nave sullo schema delle navi "#" posizionate al di sopra
+
+della griglia di gioco, e la nave si considera persa.
+
+Vince il giocatore che per primo affonda tutte le navi dell'avversario.
