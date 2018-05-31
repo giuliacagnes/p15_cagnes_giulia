@@ -46,7 +46,7 @@ public class BattagliaNavale {
 		
 		
 		Scanner input = new Scanner(System.in);
-		login(input);// login degli utenti
+		consoleLogin(input);// login degli utenti
 		
 		do {
 			System.out.println("inserisci: -> '1' per leggere le regole del gioco o -> '2' per iniziare la partita");
@@ -61,7 +61,7 @@ public class BattagliaNavale {
 		}
 		
 		System.out.println("\n"+"In attesa del secondo giocatore..");
-		login(input);
+		consoleLogin(input);
 
 		do {
 			System.out.println("inserisci: -> '1' per leggere le regole del gioco o -> '2' per iniziare la partita");
@@ -205,7 +205,7 @@ public class BattagliaNavale {
 		input.close();
 	}
 	
-	public static void login(Scanner input) {
+	public static void consoleLogin(Scanner input) {
 		String email = null;
 		String password = null;
 		
@@ -231,13 +231,13 @@ public class BattagliaNavale {
 			
 			password = input.next();
 			
-			u = verificaLogin(email, password);
+			u = login(email, password);
 		}while(u == null);
 		
 		utentiLoggati.add(u);
 	}
 	
-	public static UtenteRegistrato verificaLogin(String email, String password) {
+	public static UtenteRegistrato login(String email, String password) {
 		
 		
 		String si = null;
@@ -265,7 +265,7 @@ public class BattagliaNavale {
 		if(si.equals("1")){
 			registrazioneUtente();
 		}if (si.equals("2")) {
-			login(input);
+			consoleLogin(input);
 		}
 		
 		return null;

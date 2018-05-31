@@ -170,9 +170,9 @@ public class Campo {
 	 * @return boolean true : se siamo sul bordo della griglia e la cella precendente e' occupata e l'id è differente
 	 *                 false: se le condizioni precedenti,per tutte le direzioni, non sono verificate => non ha navi intorno
 	 */
-	private boolean haAltreNaviAttorno(Nave nave, int x, int y) {
-		// Su
-		if(		(y != 0) && // non siamo nel bordo superiore
+	public boolean haAltreNaviAttorno(Nave nave, int x, int y) { //era private prima
+		// Su                  
+		if(		(y != 0) && // se non siamo nel bordo superiore
 				(griglia[y-1][x].eOccupata()) && // non e libera
 				nave.getId() != griglia[y-1][x].getIdNave()) // e una nave diversa
 		{
