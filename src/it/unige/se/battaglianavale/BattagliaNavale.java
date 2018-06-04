@@ -318,7 +318,10 @@ public class BattagliaNavale {
 			}
 		} while(!matcher.matches());
 	}
-
+    /**
+     * Cosulta Regolamento stampa a schermo le regole del gioco 
+     * @param input
+     */
 	public static void consultaRegolamento(Scanner input) {
 		// stampa regolamento
 		System.out.println(caricaRegolamentoDaFile());
@@ -326,7 +329,9 @@ public class BattagliaNavale {
 		System.out.println("Premere una lettera a scelta per iniziare la partita");
 		input.next();
 	}
-	
+	/**
+	 * Abbandona partita permette all'utente di terminare la partita in qualunque momento nella fase di gioco
+	 */
 	public static void abbandonaPartita() {
 		System.exit(1);
 	}
