@@ -46,12 +46,13 @@ public class BattagliaNavale {
 		registraUtente(new UtenteRegistrato("Giulia","Cagnes","giulia.cagnes@gmail.com","12345"));
 		registraUtente(new UtenteRegistrato("Roberto","Bianchi","roberto.bianchi@gmail.com","54321"));
 		
+		//funzione per far effettuare il login e la registrazione agli utenti
 		schermataLogin(input);
-
 		
-		
+		//funzione che visualizza il menu principale che consiste in gioca nuova partita o leggere regole del gioco
 		schermataPrincipale(input);
 		
+		//scelta paramentri,decisione concordata tra due giocatori prima di iniziare la partita 
 		do {
 			System.out.println("Inserisci lunghezze delle navi (es: [2,3,4] per avere 3 navi di dimensione 2,3 e 4 rispettivamente): ");
 		    System.out.println("NB: lunghezza massima della nave e' 5 puoi insiririefino ad un massimo 5 navi in campo.");
@@ -80,14 +81,14 @@ public class BattagliaNavale {
 
 		Partita partita = new Partita(giocatoreA,giocatoreB);
 
-		// Fase di posizionamento navi			
+		// Fase di posizionamento navi
 		do {
 			System.out.println("Premere:");
 			System.out.println("[R]andom: per disporre le navi automaticamente in modo casuale nel campo");
 			System.out.println("[M]anuale: per disporre le navi manualmente nel campo");
 			s = input.next();
 	        
-			pattern = Pattern.compile("[R|M]", Pattern.CASE_INSENSITIVE);
+			pattern = Pattern.compile("[R|M]", Pattern.CASE_INSENSITIVE); //scelta tra posizionaNaviRandom o PosizionaNaviManualmente
 			matcher = pattern.matcher(s);
 		} while(!matcher.matches());
 		
@@ -102,7 +103,7 @@ public class BattagliaNavale {
 			boolean haColpito = true;
 
 			System.out.println(partita);
-			System.out.println("Spara un colpo!");
+			System.out.println("Spara un colpo!"); //inserire le cordinate per colpire una cella 
 			System.out.println("inserisci delle coordinate [1,3] :");
 			System.out.println("[#riga,#colonna]");
 			
@@ -118,7 +119,7 @@ public class BattagliaNavale {
 				haColpito = partita.attacca(x, y);
 			}	
 			
-			if(!haColpito) {
+			if(!haColpito) { // se la cella che ha attaccato non contiene la nave allora cambia turno giocatore
 				partita.cambiaTurno();	
 			}
 		}
@@ -126,6 +127,10 @@ public class BattagliaNavale {
 		
 		System.exit(0);
 	}
+	/**
+	 * Schermata di Login che consente all'utente di scegliere se registrarsi e effettuare il login oppure di loggarsi direttamente.
+	 * @param input
+	 */
 	
 	private static void schermataLogin(Scanner input) {
 		do {
@@ -174,6 +179,10 @@ public class BattagliaNavale {
 			
 		}while(utentiLoggati.size() < 2);
 	}
+	/**
+	 *  Login dell'utente inserendo email e password 
+	 * @param input
+	 */
 
 	public static void loginUtenteDaConsole(Scanner input) {
 		String email = null;
@@ -195,6 +204,11 @@ public class BattagliaNavale {
 		System.out.println("Login effettuato correttamente!");
 	}
 	
+	/**
+	 * Verifica che il formato email inserito sia corretto come spiegato nell'esempio
+	 * @param input
+	 * @return email
+	 */
 	private static String convalidaEmail(Scanner input) {
 		Pattern pattern = null;
 		Matcher matcher = null;
@@ -212,12 +226,12 @@ public class BattagliaNavale {
 		return email;
 	}
 
-	/*
+	/**
 	 * Verifica che credenziali siano registrate nel sistema.
 	 * @param email
 	 * @param password
 	 * @return L'utente registrato in caso positivo, null altrimenti
-	 * */
+	 */
 	public static UtenteRegistrato verificaLogin(String email, String password) {	
 		for(int i=0;i<utentiRegistrati.size();++i) {
 			UtenteRegistrato corrente = utentiRegistrati.get(i);
@@ -230,15 +244,19 @@ public class BattagliaNavale {
 		return null;
 	}
 	
+	/**
+	 * Legge dal file regoleDelGioco il regolamento del gioco
+	 * @return regolamento
+	 */
 	public static String caricaRegolamentoDaFile() {
 	    char[] in = new char[500000];
 	    int size = 0;
 	    String regolamento="";
 	    
 	    try {
-	        File file = new File(percorsoRegolamento);
+	        File regoleDelGioco = new File(percorsoRegolamento);
 	        
-	        FileReader fr = new FileReader(file);
+	        FileReader fr = new FileReader(regoleDelGioco);
 	        size = fr.read(in);
 	        for(int i=0; i<size; i++) {
 	        	regolamento+=in[i];
@@ -252,6 +270,11 @@ public class BattagliaNavale {
 	    return regolamento;
 	}
 	
+	/**
+	 * Registra utente da console permette all'utente di registrarsi e di essere aggiunto alla
+	 * lista degli utenti registrati
+	 * @param input
+	 */
 	public static void registraUtenteDaConsole(Scanner input) {		
 		System.out.println("Inserisci Nome:");
 		String nome = input.next();
@@ -272,13 +295,18 @@ public class BattagliaNavale {
 		utentiRegistrati.add(utente);
 	}
 		
+	/**
+	 * Schermata principale consente di scegliere se leggere il regolamento o di iniziare
+	 * direttamente a giocare una nuova partita
+	 * @param input
+	 */
 	private static void schermataPrincipale(Scanner input) {
 		Matcher matcher = null;
 		String s = null;
 		
 		do {
 			System.out.println("Premere:");
-			System.out.println("[I]nizia: per giocare direttamente la partita");
+			System.out.println("[I]nizia: per giocare una nuova partita di battaglia navale ");
 			System.out.println("[R]egolamento: per consultare il regolamento prima di iniziare la partita");
 			s = input.next();
 	        
@@ -295,7 +323,7 @@ public class BattagliaNavale {
 		// stampa regolamento
 		System.out.println(caricaRegolamentoDaFile());
 		
-		System.out.println("Premere un tasto per iniziare la partita");
+		System.out.println("Premere una lettera a scelta per iniziare la partita");
 		input.next();
 	}
 	
