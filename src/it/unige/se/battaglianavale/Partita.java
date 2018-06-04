@@ -5,6 +5,11 @@
  */
 package it.unige.se.battaglianavale;
 
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import it.unige.se.battaglianavale.Utils.Direzione;
 import it.unige.se.battaglianavale.Utils.StatoCoordinata;
 
 /**
@@ -39,7 +44,7 @@ public class Partita {
 		this.giocatoreB = giocatoreB;
 
 		diTurno = giocatoreA;
-		vincitore = null;
+		setVincitore(null);
 	}
 	/**
 	 * Partita e' terminata
@@ -49,9 +54,9 @@ public class Partita {
 	 */
 	public boolean eTerminata() {
 		if(!giocatoreA.haNaviInGioco()) {
-			this.vincitore = giocatoreB;
+			this.setVincitore(giocatoreB);
 		} else if(!giocatoreB.haNaviInGioco()) {
-			this.vincitore = giocatoreA;
+			this.setVincitore(giocatoreA);
 		} else {
 			return false;
 		}
@@ -115,6 +120,59 @@ public class Partita {
 	}
 	
 	/**
+	 * Posiziona una singola nave per il giocatore di turno
+	 */
+	protected void posizionaNaveManualmente(int x, int y, Utils.Direzione dir) {
+		if (diTurno.haNaviDaPosizionare()){
+			diTurno.posizionaNave(x, y, dir);
+			if (!diTurno.haNaviDaPosizionare()) {
+				this.cambiaTurno();
+			}
+		}
+	}
+
+	/**
+	 * Posiziona le navi manualmente per entrambi i giocatori
+	 */
+	public void posizionaNaviManualmente(Scanner input) {
+		do {
+			System.out.println(diTurno);
+			System.out.println(diTurno.getCampo());
+
+			System.out.println("Posizionamento Navi...");
+			System.out.println("inserisci delle coordinate e una direzione es. [1,3,U] :");
+			System.out.println("[#riga, #colonna, direzione possibile: U_= UP , D = DOWN, L = LEFT, R = RIGHT]");
+		
+			String s = input.next();
+        
+			Pattern pattern = Pattern.compile("(\\d),(\\d),([U|D|L|R])");
+			Matcher m = pattern.matcher(s);
+		
+				if (m.matches()) {
+					int y = Integer.parseInt(m.group(1));
+					int x = Integer.parseInt(m.group(2));
+					String dir = m.group(3);
+					
+					switch (dir) {
+					case "U":
+						this.posizionaNaveManualmente(x, y, Direzione.SU);
+						break;
+					case "D":
+						this.posizionaNaveManualmente(x, y, Direzione.SU);
+						break;
+					case "L":
+						this.posizionaNaveManualmente(x, y, Direzione.SU);
+						break;
+					case "R":
+						this.posizionaNaveManualmente(x, y, Direzione.SU);
+						break;
+					}
+			
+				}
+			} while (diTurno.haNaviDaPosizionare());
+	}
+	
+	/**
 	 * stampa a schermo il giocatore di turno
 	 * e la sua griglia
 	 */
@@ -139,5 +197,11 @@ public class Partita {
 		ret += "\n";
 		
 		return ret;
+	}
+	public Giocatore getVincitore() {
+		return vincitore;
+	}
+	public void setVincitore(Giocatore vincitore) {
+		this.vincitore = vincitore;
 	}
 }

@@ -179,4 +179,7 @@ public class Giocatore {
 		return false;
 		
 	}
+public void setCampo(Campo campo) {
+	this.campo = campo;
+}
 }

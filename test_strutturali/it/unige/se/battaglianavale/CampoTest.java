@@ -74,30 +74,10 @@ public class CampoTest {
 		
 		
 	}
-	@Test
-	public void testHaAltreNaviAttorno2() {
-		//sempre falso se controllo nel bordo della griglia
-				assertFalse("posizione non corretta",campo.haAltreNaviAttorno(n, 0, 0));
-				assertFalse("posizione non corretta",campo.haAltreNaviAttorno(n, 9, 9));
-				assertFalse("posizione non corretta",campo.haAltreNaviAttorno(n, 0, 9));
-				assertFalse("posizione non corretta",campo.haAltreNaviAttorno(n, 9, 0));
-	}
+
 		
 		
 		
-//		boolean posiziona = giocatore.posizionaNave(0,2, Utils.Direzione.GIU);
-//		assertTrue("la nave non e stata posizionata", posiziona);
-//		
-//		boolean posiziona = giocatore.posizionaNave(0,2, Utils.Direzione.SU);
-//		assertTrue("la nave non e stata posizionata", posiziona);
-//		
-//		
-//		assertTrue("la nave non e stata ",campo.getGriglia()[2][0].eOccupata());
-//		assertTrue("la nave non e stata posizionata",campo.getGriglia()[3][0].eOccupata());
-//		
-//		posiziona = giocatore.posizionaNave(1,2,Utils.Direzione.SU);
-//		assertFalse("nave posizionata ma esce dalla griglia ", posiziona);
-//		
-	
+
 
 }
