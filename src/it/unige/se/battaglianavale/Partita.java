@@ -122,9 +122,11 @@ public class Partita {
 	/**
 	 * Posiziona una singola nave per il giocatore di turno
 	 */
+	
 	protected void posizionaNaveManualmente(int x, int y, Utils.Direzione dir) {
 		if (diTurno.haNaviDaPosizionare()){
 			diTurno.posizionaNave(x, y, dir);
+			
 			if (!diTurno.haNaviDaPosizionare()) {
 				this.cambiaTurno();
 			}
@@ -140,7 +142,7 @@ public class Partita {
 			System.out.println(diTurno.getCampo());
 
 			System.out.println("Posizionamento Navi...");
-			System.out.println("inserisci delle coordinate e una direzione es. [1,3,U] :");
+			System.out.println("inserisci delle coordinate e una direzione es. [1,3,D] :");
 			System.out.println("[#riga, #colonna, direzione possibile: U_= UP , D = DOWN, L = LEFT, R = RIGHT]");
 		
 			String s = input.next();
@@ -158,13 +160,13 @@ public class Partita {
 						this.posizionaNaveManualmente(x, y, Direzione.SU);
 						break;
 					case "D":
-						this.posizionaNaveManualmente(x, y, Direzione.SU);
+						this.posizionaNaveManualmente(x, y, Direzione.GIU);
 						break;
 					case "L":
-						this.posizionaNaveManualmente(x, y, Direzione.SU);
+						this.posizionaNaveManualmente(x, y, Direzione.SINISTRA);
 						break;
 					case "R":
-						this.posizionaNaveManualmente(x, y, Direzione.SU);
+						this.posizionaNaveManualmente(x, y, Direzione.DESTRA);
 						break;
 					}
 			

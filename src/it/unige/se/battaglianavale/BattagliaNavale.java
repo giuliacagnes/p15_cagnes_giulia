@@ -71,7 +71,7 @@ public class BattagliaNavale {
 	    int i=0;
 	    for(String lunghezzaNave:lunghezzaNaviStr){ // alla prima iterazione lunghezzaNave varra 3, alla seconda quattro e alla 3 due
 	        lunghezzaNavi[i]=Integer.parseInt(lunghezzaNave);
-	        System.out.println(lunghezzaNavi[i]);
+	        //System.out.println(lunghezzaNavi[i]);
 	        i++;
 	    }
 	    
@@ -83,7 +83,7 @@ public class BattagliaNavale {
 		// Fase di posizionamento navi			
 		do {
 			System.out.println("Premere:");
-			System.out.println("[R]andom: per disporre le navi automaticamente in modo casuale");
+			System.out.println("[R]andom: per disporre le navi automaticamente in modo casuale nel campo");
 			System.out.println("[M]anuale: per disporre le navi manualmente nel campo");
 			s = input.next();
 	        
