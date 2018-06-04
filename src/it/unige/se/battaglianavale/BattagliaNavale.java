@@ -83,8 +83,8 @@ public class BattagliaNavale {
 		// Fase di posizionamento navi			
 		do {
 			System.out.println("Premere:");
-			System.out.println("[R]andom: per disporre le navi randomiament");
-			System.out.println("[M]anuale: per disporre le navi manualmente");
+			System.out.println("[R]andom: per disporre le navi automaticamente in modo casuale");
+			System.out.println("[M]anuale: per disporre le navi manualmente nel campo");
 			s = input.next();
 	        
 			pattern = Pattern.compile("[R|M]", Pattern.CASE_INSENSITIVE);
@@ -135,7 +135,7 @@ public class BattagliaNavale {
 			do {
 				System.out.println(">>>>> Benvenuto nel gioco di Battaglia Navale online! <<<<<");				
 				System.out.println("Premere:");
-				System.out.println("[R]egistra un nuovo utente");
+				System.out.println("[R]egistra un nuovo utente e poi effettua il log in");
 				System.out.println("[L]og in");
 				sceltaUtente = input.next();
 		        
@@ -146,14 +146,16 @@ public class BattagliaNavale {
 	
 			if(sceltaUtente.toLowerCase().equals("r")) {
 				registraUtenteDaConsole(input);
+				System.out.println("Login primo giocatore:");
 				loginUtenteDaConsole(input);
 			} else { 
 				System.out.println("Login primo giocatore:");
 				loginUtenteDaConsole(input);
+			}
 				do {
 								
 					System.out.println("Secondo giocatore...Premere:");
-					System.out.println("[R]egistra un nuovo utente");
+					System.out.println("[R]egistra un nuovo utente e poi effettua il log in");
 					System.out.println("[L]og in");
 					sceltaUtente = input.next();
 			        
@@ -162,13 +164,14 @@ public class BattagliaNavale {
 				} while(!matcher.matches());
 				if(sceltaUtente.toLowerCase().equals("r")) {
 					registraUtenteDaConsole(input);
+					System.out.println("Login secondo giocatore:");
 					loginUtenteDaConsole(input);
 				
 				}else {
 				System.out.println("login secondo giocatore");
 				loginUtenteDaConsole(input);		
 				}
-			}
+			
 		}while(utentiLoggati.size() < 2);
 	}
 
@@ -189,6 +192,7 @@ public class BattagliaNavale {
 		}while(u == null);
 		
 		utentiLoggati.add(u);
+		System.out.println("Login effettuato correttamente!");
 	}
 	
 	private static String convalidaEmail(Scanner input) {
