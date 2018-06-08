@@ -28,6 +28,8 @@ public class Nave {
 	
 	/**ArrayList di celle occupate*/
 	private ArrayList<Cella> celleOccupate;
+
+	private boolean posizionata;
 	
 	/**
 	 * Costruttore di nave
@@ -43,8 +45,12 @@ public class Nave {
 		
 		this.affondata = false;
 		celleOccupate = new ArrayList<>();
+		posizionata=false;
 	}
 	
+	public boolean ePosizionata() {
+		return posizionata;
+	}
 	/**
 	 * Controllo se la nave è affondata se tutte le celle occupate
 	 * sono state colpite
@@ -88,6 +94,7 @@ public class Nave {
 	 */
 	public void occupaCella(Cella cellaDaOccupare) {
 		celleOccupate.add(cellaDaOccupare);
+		posizionata = true;
 	}
 	/**
 	 * stampo a schermo la nave con il simbolo # 
