@@ -27,6 +27,9 @@ public class Giocatore {
 	/** Associazione fra giocatore e navi*/
 	private ArrayList<Nave> navi;
 	
+	public ArrayList<Nave> getNavi() {
+		return navi;
+	}
 	/**Campo del giocatore*/
 	private Campo campo;
 
