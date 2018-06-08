@@ -94,13 +94,13 @@ public class Partita {
 	 *                 False giocatore di turno aggiorna matrice memoria mosse con stato mancato nelle cordinate passate
 	 */
 	public boolean attacca(int x, int y) {
-		Campo campoAvversario = null;
+		Campo campoAvv = null;//campo avversario
 		if(diTurno == giocatoreA)
-			campoAvversario = giocatoreB.getCampo();
+			campoAvv = giocatoreB.getCampo();
 		else
-			campoAvversario = giocatoreA.getCampo();
+			campoAvv = giocatoreA.getCampo();
 		
-		if(campoAvversario.attaccaCella(x,y)) {
+		if(campoAvv.attaccaCella(x,y)) {
 			diTurno.registraMossa(x,y,StatoCoordinata.COLPITO);
 			return true;
 		}
