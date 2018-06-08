@@ -56,7 +56,11 @@ public class BattagliaNavale {
 		do {
 			System.out.println("Inserisci lunghezze delle navi (es: [2,3,4] per avere 3 navi di dimensione 2,3 e 4 rispettivamente): ");
 		    System.out.println("NB: lunghezza massima della nave e' 5 puoi insiririefino ad un massimo 5 navi in campo.");
+		    System.out.println("oppure premi la lettera [q]uit per terminare la partita");
 			s = input.next();
+	        if(s.toLowerCase().equals("q")) {
+	        	abbandonaPartita();
+	        }
 
 			pattern = Pattern.compile("^([1|2|3|4|5],){0,4}([1|2|3|4|5])$");
 			matcher = pattern.matcher(s);
@@ -99,6 +103,7 @@ public class BattagliaNavale {
 		}
 		
 		// Fase di gioco
+		System.out.println("ricorda! premi la lettera [q]uit per abbandonare la partita");
 		while(!partita.eTerminata()) {
 			boolean haColpito = true;
 
@@ -108,6 +113,9 @@ public class BattagliaNavale {
 			System.out.println("[#riga,#colonna]");
 			
 	        s = input.next();
+	        if(s.toLowerCase().equals("q")) {
+	        	abbandonaPartita();
+	        }
 	        
 			pattern = Pattern.compile("(\\d),(\\d)");
 			matcher = pattern.matcher(s);
@@ -140,7 +148,7 @@ public class BattagliaNavale {
 			do {
 				System.out.println(">>>>> Benvenuto nel gioco di Battaglia Navale online! <<<<<");				
 				System.out.println("Premere:");
-				System.out.println("[R]egistra un nuovo utente e poi effettua il log in");
+				System.out.println("[R]egistrati come nuovo utente e poi effettua il log in");
 				System.out.println("[L]og in");
 				sceltaUtente = input.next();
 		        
@@ -160,7 +168,7 @@ public class BattagliaNavale {
 				do {
 								
 					System.out.println("Secondo giocatore...Premere:");
-					System.out.println("[R]egistra un nuovo utente e poi effettua il log in");
+					System.out.println("[R]egistrati come nuovo utente e poi effettua il log in");
 					System.out.println("[L]og in");
 					sceltaUtente = input.next();
 			        
@@ -333,6 +341,7 @@ public class BattagliaNavale {
 	 * Abbandona partita permette all'utente di terminare la partita in qualunque momento nella fase di gioco
 	 */
 	public static void abbandonaPartita() {
+		System.out.println("Partita Terminata!!!! un giocatore ha abbandonato la partita di battaglia navele in corso! ");
 		System.exit(1);
 	}
 	
