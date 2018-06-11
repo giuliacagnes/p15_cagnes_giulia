@@ -4,14 +4,15 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
-// attacca cella
+
 public class UC10 {
-    Giocatore giocatoreA;
-    Giocatore giocatoreB;
-	
-	Partita p;
-	
-	Giocatore giocatoreAV;
+	 Giocatore giocatoreA;
+	    Giocatore giocatoreB;
+		
+		Partita p;
+		
+		Giocatore giocatoreAV;
+
 	@Before
 	public void setUp() throws Exception {
 		int[] lunghezzaNavi = {2,3,1};
@@ -35,6 +36,7 @@ public class UC10 {
 		p = new Partita(giocatoreA, giocatoreB);
 	}
 
+
 	@Test
 	public void attaccaCella1() {
 		assertTrue("la cella 3,3 non e' stata attaccata",p.attacca(3, 3));
@@ -47,6 +49,4 @@ public class UC10 {
 		assertFalse("la nave risulta attaccata ma non lo e'",p.attacca(9, 9));
 		assertFalse("la nave risulta attaccata ma non lo e'",p.attacca(1, 1));
 	}
-	
-
 }
