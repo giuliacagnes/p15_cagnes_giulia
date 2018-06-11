@@ -221,14 +221,17 @@ public class BattagliaNavale {
 		Pattern pattern = null;
 		Matcher matcher = null;
 		
+		
 		String email = null;
 		do {
+			
 			System.out.println("inserisci email di un formato corretto (es. pippo123@gmail.com):");
 			email = input.next();
 			
 			// https://stackoverflow.com/questions/8204680/java-regex-email 
 			pattern = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 			matcher = pattern.matcher(email);
+			
 		}while(!matcher.matches());
 		
 		return email;
@@ -314,7 +317,7 @@ public class BattagliaNavale {
 		
 		do {
 			System.out.println("Premere:");
-			System.out.println("[I]nizia: per giocare una nuova partita di battaglia navale ");
+			System.out.println("[I]nizia: per giocare una nuova partita di battaglia navale online ");
 			System.out.println("[R]egolamento: per consultare il regolamento prima di iniziare la partita");
 			s = input.next();
 	        
