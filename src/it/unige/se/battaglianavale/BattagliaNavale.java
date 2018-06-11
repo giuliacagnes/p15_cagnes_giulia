@@ -27,6 +27,7 @@ public class BattagliaNavale {
 	/* ArrayList contiene utenti loggati, associazione fra battaglia navale e utente registrato */
 	private static ArrayList<UtenteRegistrato> utentiLoggati = new ArrayList<UtenteRegistrato>();
 
+	/*stringa contenente il percorso per trovare il file dove sono scritte le regole del gioco*/
     private static String percorsoRegolamento = "src/Regole-del-gioco";
 
 	/**
@@ -35,14 +36,18 @@ public class BattagliaNavale {
 	 * @param args argomenti
 	 */
 	public static void main(String[] args) {
+		//dichiarazione e inizializzazione parametri
 		String s = null;
 		Pattern pattern = null;
 		Matcher matcher = null;
 		
-		
+		//istanza di un oggetto di tipo Scanner che utlizzo in seguito per leggere dati da tastiera 
 		Scanner input = new Scanner(System.in);
 		
 		// Aggiungo due utenti registrati per simulare persistenza
+		UtenteRegistrato r = new UtenteRegistrato("pippo", "pluto", "pp@gmail.com", "111");
+		registraUtente(r);
+	
 		registraUtente(new UtenteRegistrato("Giulia","Cagnes","giulia.cagnes@gmail.com","12345"));
 		registraUtente(new UtenteRegistrato("Roberto","Bianchi","roberto.bianchi@gmail.com","54321"));
 		
@@ -55,7 +60,7 @@ public class BattagliaNavale {
 		//scelta paramentri,decisione concordata tra due giocatori prima di iniziare la partita 
 		do {
 			System.out.println("Inserisci lunghezze delle navi (es: [2,3,4] per avere 3 navi di dimensione 2,3 e 4 rispettivamente): ");
-		    System.out.println("NB: lunghezza massima della nave e' 5 puoi insiririefino ad un massimo 5 navi in campo.");
+		    System.out.println("NB: la lunghezza massima delle navi e' 5. Puoi inserire fino ad un massimo 5 navi in campo.");
 		    System.out.println("oppure premi la lettera [q]uit per terminare la partita");
 			s = input.next();
 	        if(s.toLowerCase().equals("q")) {
@@ -132,7 +137,7 @@ public class BattagliaNavale {
 			}
 		}
 		input.close();
-		
+		System.out.println("--->>>> Il giocatore "+ partita.getDiTurno() +" ha vinto la partita di Battaglia Navale!!!<<<<---- =)");
 		System.exit(0);
 	}
 	/**
@@ -300,6 +305,7 @@ public class BattagliaNavale {
 		String password = input.next();
 		
 		utentiRegistrati.add(new UtenteRegistrato(nome,cognome,email,password));
+		System.out.println("Ti sei registrato correttamente! Ora effettua il login..");
 	}
 	
 	public static void registraUtente(UtenteRegistrato utente) {
