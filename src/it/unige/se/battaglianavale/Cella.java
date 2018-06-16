@@ -111,7 +111,7 @@ public class Cella {
 		return false; // return true secondo me 
 	}
 	/**
-	 * stampo a schermo con il simbolo # se la cella e' occupata dalla nave altrimenti ~
+	 * stampo a schermo con il simbolo "#" se la cella e' occupata dalla nave altrimenti "~"
 	 */
 	
 	@Override

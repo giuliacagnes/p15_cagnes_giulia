@@ -14,7 +14,7 @@ import it.unige.se.battaglianavale.Utils.Direzione;
 import it.unige.se.battaglianavale.Utils.StatoCoordinata;
 
 /**
- * Classe Giocatore.
+ * Classe Giocatore
  * 
  * @version		0.1 28 May 2017
  * @author 		Giulia Cagnes
@@ -27,9 +27,6 @@ public class Giocatore {
 	/** Associazione fra giocatore e navi*/
 	private ArrayList<Nave> navi;
 	
-	public ArrayList<Nave> getNavi() {
-		return navi;
-	}
 	/**Campo del giocatore*/
 	private Campo campo;
 
@@ -126,7 +123,6 @@ public class Giocatore {
 	 * @param y indice di colonna
 	 * @param valore stato della cordinata
 	 * 
-	 * @return memoriaMosse
 	 */
 	public void registraMossa(int x, int y, StatoCoordinata valore) {
 		memoriaMosse[y][x] = valore; 
@@ -147,6 +143,13 @@ public class Giocatore {
 			this.posizionaNave(x, y, dir); //posiziona nave cordinate scelte randomicamente
 		}
 	}
+	/**metodo getNavi che mi ritorna le navi
+	 * @return navi
+	 */
+	public ArrayList<Nave> getNavi() {
+		return navi;
+	}
+	
 
 	@Override
 	public String toString() {

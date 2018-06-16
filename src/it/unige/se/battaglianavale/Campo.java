@@ -8,7 +8,7 @@ package it.unige.se.battaglianavale;
 
 import java.util.ArrayList;
 /**
- * Classe Campo di gioco
+ * Classe Campo di gioco che viene utilizzato dai giocatori
  * 
  * @version 0.1 22 May 2018
  * @author Giulia Cagnes

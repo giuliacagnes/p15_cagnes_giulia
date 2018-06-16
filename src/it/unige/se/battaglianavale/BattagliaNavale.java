@@ -66,8 +66,8 @@ public class BattagliaNavale {
 	        if(s.toLowerCase().equals("q")) {
 	        	abbandonaPartita();
 	        }
-
-			pattern = Pattern.compile("^([1|2|3|4|5],){0,4}([1|2|3|4|5])$");
+	        //uso il Regular Expression Language
+			pattern = Pattern.compile("^([1|2|3|4|5],){0,4}([1|2|3|4|5])$"); 
 			matcher = pattern.matcher(s);
 		} while(!matcher.matches());
 		
@@ -139,6 +139,7 @@ public class BattagliaNavale {
 		input.close();
 		System.out.println("--->>>> Il giocatore "+ partita.getDiTurno() +" ha vinto la partita di Battaglia Navale!!!<<<<---- =)");
 		System.exit(0);
+		System.out.println("FINE PARTITA");
 	}
 	/**
 	 * Schermata di Login che consente all'utente di scegliere se registrarsi e effettuare il login oppure di loggarsi direttamente.
@@ -159,7 +160,7 @@ public class BattagliaNavale {
 		        
 				Pattern pattern = Pattern.compile("[R|L]", Pattern.CASE_INSENSITIVE);
 				matcher = pattern.matcher(sceltaUtente);
-			} while(!matcher.matches());
+			} while(!matcher.matches());// se non corrisponde al pattern ovvero non ha premuto ne r ne l cicla ancora
 			
 	
 			if(sceltaUtente.toLowerCase().equals("r")) {
@@ -204,7 +205,6 @@ public class BattagliaNavale {
 		UtenteRegistrato u = null;
 		do {
 			System.out.println("email:");
-			
 			email = convalidaEmail(input);
 				
 			System.out.println("password:");			
@@ -287,8 +287,8 @@ public class BattagliaNavale {
 	}
 	
 	/**
-	 * Registra utente da console permette all'utente di registrarsi e di essere aggiunto alla
-	 * lista degli utenti registrati
+	 * Registra utente da console permette all'utente di registrarsi inserendo i propri dati da tastiera
+	 * e di essere aggiunto alla lista degli utenti registrati nel software del gioco Battaglia Navale
 	 * @param input
 	 */
 	public static void registraUtenteDaConsole(Scanner input) {		
@@ -308,6 +308,10 @@ public class BattagliaNavale {
 		System.out.println("Ti sei registrato correttamente! Ora effettua il login..");
 	}
 	
+	/**
+	 * registraUtente prende l'utente e lo aggiunge alla lista degli utenti registrati
+	 * @param utente
+	 */
 	public static void registraUtente(UtenteRegistrato utente) {
 		utentiRegistrati.add(utente);
 	}

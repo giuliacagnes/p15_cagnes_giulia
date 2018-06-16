@@ -13,7 +13,7 @@ import it.unige.se.battaglianavale.Utils.Direzione;
 import it.unige.se.battaglianavale.Utils.StatoCoordinata;
 
 /**
- * Classe Partita
+ * Classe Partita 
  * 
  * @version		0.1 22 May 2018
  * @author 		Giulia Cagnes

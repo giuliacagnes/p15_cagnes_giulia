@@ -29,6 +29,7 @@ public class Nave {
 	/**ArrayList di celle occupate*/
 	private ArrayList<Cella> celleOccupate;
 
+	/** booleano indica se la nave è gia posizionata oppure no */
 	private boolean posizionata;
 	
 	/**
